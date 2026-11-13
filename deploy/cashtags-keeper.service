@@ -1,0 +1,11 @@
+[Unit]
+Description=Cashtags keeper (collect creator fees, credit, auto-pay, holder airdrops)
+
+[Service]
+Type=oneshot
+WorkingDirectory=/root/cashtags-api
+ExecStart=/usr/bin/node /root/cashtags-api/api/keeper-run.mjs
+EnvironmentFile=/root/cashtags-ops/api.env
+Environment=DATA_DIR=/var/lib/cashtags
+Nice=10
+TimeoutStartSec=900

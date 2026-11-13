@@ -1,0 +1,21 @@
+[Unit]
+Description=Cashtags api + @UseCashtags bot (cashtags.family)
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/root/cashtags-api
+ExecStart=/usr/bin/node /root/cashtags-api/api/server.mjs
+# ⛔ Secrets live in the env file (0600), never in Environment= lines: unit files are world readable.
+EnvironmentFile=/root/cashtags-ops/api.env
+Environment=PORT=5570
+Environment=DATA_DIR=/var/lib/cashtags
+Environment=VANITY_DIR=/var/lib/cashtags/vanity-incoming
+Environment=GRIND_BIN=/root/cashtags-api/bin/cashtags-grind
+Environment=VANITY_THREADS=1
+Nice=10
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

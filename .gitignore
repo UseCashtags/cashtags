@@ -1,0 +1,17 @@
+node_modules/
+target/
+test-ledger/
+validator.log
+data/
+keys/
+.env
+*.env
+!web/.env.production
+secrets*
+!deploy/secrets.env.example
+*.key
+tests/fixtures/*.json
+web/node_modules/
+web/dist/
+*.tsbuildinfo
+tools/grind/target/
